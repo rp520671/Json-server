@@ -8,17 +8,21 @@ import EditableRow from "./components/EditableRow";
 const App = () => {
   const [contacts, setContacts] = useState(data);
   const [addFormData, setAddFormData] = useState({
-    fullName: "",
-    address: "",
-    phoneNumber: "",
-    email: "",
+    srno: "",
+    receiverName: "",
+    companyName: "",
+    emailId: "",
+    mobileNo:"",
+    place:""
   });
 
   const [editFormData, setEditFormData] = useState({
-    fullName: "",
-    address: "",
-    phoneNumber: "",
-    email: "",
+    srno: "",
+    receiverName: "",
+    companyName: "",
+    emailId: "",
+    mobileNo:"",
+    place:"",
   });
 
   const [editContactId, setEditContactId] = useState(null);
@@ -52,10 +56,12 @@ const App = () => {
 
     const newContact = {
       id: nanoid(),
-      fullName: addFormData.fullName,
-      address: addFormData.address,
-      phoneNumber: addFormData.phoneNumber,
-      email: addFormData.email,
+      srno: addFormData.srno,
+      receiverName: addFormData.receiverName,
+      companyName: addFormData.companyName,
+      emailId: addFormData.emailId,
+      mobileNo: addFormData.mobileNo,
+      place:addFormData.place,
     };
 
     const newContacts = [...contacts, newContact];
@@ -66,11 +72,12 @@ const App = () => {
     event.preventDefault();
 
     const editedContact = {
-      id: editContactId,
-      fullName: editFormData.fullName,
-      address: editFormData.address,
-      phoneNumber: editFormData.phoneNumber,
-      email: editFormData.email,
+      srno: editContactId,
+      receiverName: editFormData.receiverName,
+      companyName: editFormData.companyName,
+      emailId: editFormData.emailId,
+      mobileNo: editFormData.mobileNo,
+      place: editFormData.place
     };
 
     const newContacts = [...contacts];
@@ -88,10 +95,12 @@ const App = () => {
     setEditContactId(contact.id);
 
     const formValues = {
-      fullName: contact.fullName,
-      address: contact.address,
-      phoneNumber: contact.phoneNumber,
-      email: contact.email,
+      srno: contact.srno,
+      receiverName: contact.receiverName,
+      companyName: contact.companyName,
+      emailId: contact.emailId,
+      mobileNo: contact.mobileNo,
+      place: contact.place
     };
 
     setEditFormData(formValues);
@@ -117,11 +126,12 @@ const App = () => {
         <table>
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Address</th>
-              <th>Phone Number</th>
-              <th>Email</th>
-              <th>Actions</th>
+              <th>Sr.No</th>
+              <th>Receiver name</th>
+              <th>Company Name</th>
+              <th>Email ID</th>
+              <th>Mobile No</th>
+              <th>Place</th>
             </tr>
           </thead>
           <tbody>
@@ -150,32 +160,47 @@ const App = () => {
       <form onSubmit={handleAddFormSubmit}>
         <input
           type="text"
-          name="fullName"
+          name="srno"
           required="required"
-          placeholder="Enter a name..."
+          placeholder="Enter serial number"
           onChange={handleAddFormChange}
         />
         <input
           type="text"
-          name="address"
+          name="receiverName"
           required="required"
-          placeholder="Enter an addres..."
+          placeholder="Enter Receiver's name"
           onChange={handleAddFormChange}
         />
         <input
           type="text"
-          name="phoneNumber"
+          name="companyName"
           required="required"
-          placeholder="Enter a phone number..."
+          placeholder="Enter Company Name."
           onChange={handleAddFormChange}
         />
         <input
           type="email"
-          name="email"
+          name="emailId"
           required="required"
           placeholder="Enter an email..."
           onChange={handleAddFormChange}
         />
+         <input
+          type="text"
+          name="mobileNo"
+          required="required"
+          placeholder="Enter Mobile No"
+          onChange={handleAddFormChange}
+        />
+         <input
+          type="text"
+          name="place"
+          required="required"
+          placeholder="Enter place"
+          onChange={handleAddFormChange}
+        />
+        
         <button type="submit">Add</button>
       </form>
     </div>
